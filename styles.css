@@ -1,0 +1,132 @@
+/* Font imports */
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+:root {
+    --primary-bg: #2c2c2c;
+    --secondary-bg: #f5e6d3;
+    --text-light: #ffffff;
+    --accent-color: #ffd700;
+    --border-radius: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--secondary-bg);
+    font-family: 'Architects Daughter', cursive;
+    min-height: 100vh;
+}
+
+/* Navigation styling */
+.nav-container {
+    background-color: var(--primary-bg);
+    padding: 1rem;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    color: var(--text-light);
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='2' viewBox='0 0 100 2' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 0,1 L 100,1' stroke='%23ffd700' stroke-width='2' stroke-linecap='round' stroke-dasharray='1, 5' /%3E%3C/svg%3E") repeat-x;
+    transform: scaleX(0);
+    transition: transform 0.3s;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+.login-btn {
+    background-color: transparent;
+    border: 2px solid var(--text-light);
+    color: var(--text-light);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.login-btn:hover {
+    background-color: var(--text-light);
+    color: var(--primary-bg);
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        color: var(--text-light);
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-bg);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
